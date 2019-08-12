@@ -311,7 +311,7 @@ extension MGAssociationMenuView : UITableViewDelegate{
         }
         if !self.isFinalColumn {  return indexPath }
         if !tableView.allowsMultipleSelection {  return indexPath }
-        guard let indexOfTables = tableViews.index(of: tableView as! MGAssociationTableView) else { return  indexPath }
+        guard let indexOfTables = tableViews.firstIndex(of: tableView as! MGAssociationTableView) else { return  indexPath }
         
         let listData = (tableView as! MGAssociationTableView).listData
         
@@ -319,7 +319,7 @@ extension MGAssociationMenuView : UITableViewDelegate{
         if let arr = tableView.indexPathsForSelectedRows {
             finalColumnWithIndexs = arr
         }
-        if let index = finalColumnWithIndexs.index(where: { (index) -> Bool in
+        if let index = finalColumnWithIndexs.firstIndex(where: { (index) -> Bool in
             index == indexPath
         }) {
             finalColumnWithIndexs.remove(at: index)
@@ -341,7 +341,7 @@ extension MGAssociationMenuView : UITableViewDelegate{
         }
         
         let listData = (tableView as! MGAssociationTableView).listData
-        guard let indexOfTables = tableViews.index(of: tableView as! MGAssociationTableView) else { return  indexPath }
+        guard let indexOfTables = tableViews.firstIndex(of: tableView as! MGAssociationTableView) else { return  indexPath }
         
         let nextListData = delegate.selectToNextTableData(tableView, tableForColumnAt: indexOfTables, cellForRowAt: indexPath, tableAt: listData, cellForTableAt: listData[indexPath.row])
         
@@ -424,7 +424,7 @@ extension MGAssociationMenuView : UITableViewDataSource{
         }
         
         let listData = (tableView as! MGAssociationTableView).listData
-        guard let indexOfTables = tableViews.index(of: tableView as! MGAssociationTableView) else { return  UITableViewCell() }
+        guard let indexOfTables = tableViews.firstIndex(of: tableView as! MGAssociationTableView) else { return  UITableViewCell() }
         
         if let cell = delegate.configureCell(tableView, tableForColumnAt: indexOfTables, cellForRowAt: indexPath, cellForTableAt: listData[indexPath.row]) {
             deleteLineTo(view: cell)

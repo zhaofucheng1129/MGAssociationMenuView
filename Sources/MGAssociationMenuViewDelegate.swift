@@ -90,11 +90,11 @@ public protocol  MGAssociationMenuViewDelegate : class {
 
 public extension MGAssociationMenuViewDelegate {
     
-    public func didShowNextTableView(_ tableView: UITableView, tableForColumnAt  column: Int, tableAt data: [Any]?) {
+    func didShowNextTableView(_ tableView: UITableView, tableForColumnAt  column: Int, tableAt data: [Any]?) {
         
     }
     
-    public func completionWithSelectData(_ selectData : [Any] ) {
+    func completionWithSelectData(_ selectData : [Any] ) {
         
     }
     
